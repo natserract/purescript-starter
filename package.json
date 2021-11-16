@@ -1,0 +1,7 @@
+{
+  "name": "purescript-starter",
+  "version": "1.0.0",
+  "description": "Starter kit for purescript",
+  "main": "index.js",
+  "license": "MIT"
+}
