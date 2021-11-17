@@ -1,19 +1,16 @@
+# Purescript Rollup Starter
+The starter app for purescript project configured with rollup
 
 ## Requirements
-- Spago
+- [Spago](https://github.com/purescript/spago)
 
-## Build (First)
-```sh
-# Install all dependencies (if not done so already) and
-# compile the code
-spago build
-```
-
-## Run Development (Not Watch)
-This will executed `src/Main.purs`
-
+## Running on Development
 ```sh
 spago run
+```
+## Build
+```sh
+yarn build
 ```
 
 ## Install Purs Packages
@@ -23,9 +20,10 @@ spago run
 spago install <package_name>
 ```
 
-## Build Watch
-```sh
-# Automatically re-build project whenever a source/test file is changed/saved
-# and clear the screen before rebuilding
-spago build --watch --clear-screen
-```
+## Features
+- [X] Module Bundling
+- [ ] Hot Reload
+
+## Note
+- `package.json` file, only used for manage bundle packages. For installing purescript packages, you must type `spago install <package_name>`
+- If you not use **spago**, you can use `packages.dhall` for installing packages
