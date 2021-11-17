@@ -47,6 +47,7 @@
     "rollup-plugin-terser": "3.0.0",
     "rollup-plugin-uglify": "6.0.0",
     "shx": "0.3.2",
+    "spago": "^0.20.3",
     "standard-version": "4.4.0",
     "webpack-config-utils": "2.3.1"
   },
