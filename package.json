@@ -18,7 +18,9 @@
     "build": "spago bundle-app --main Main --to dist/esm2015/index.js --source-maps && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
     "build:bundles": "spago bundle-module --main Main --to dist/bundles/index.js --source-maps",
     "postbuild": "node scripts/copy && npm run size",
-    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js"
+    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js",
+    "commit": "git-cz",
+    "release:github": "git push --no-verify --follow-tags origin master"
   },
   "config": {
     "commitizen": {
@@ -56,9 +58,16 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint --config config/commitlint.config.js -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged",
+      "pre-commit": "git add",
       "pre-push": "npm run style && npm test -- --bail --onlyChanged"
     }
   },
-  "lint-staged": {}
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}": [
+      "git add"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "git add"
+    ]
+  }
 }
