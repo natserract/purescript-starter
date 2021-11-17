@@ -58,4 +58,4 @@ examples =
       
 main :: Effect Unit
 main = HA.runHalogenAff do
-  pure [HH.div_ [ HH.text "Oh no! That page wasn't found." ]]
+  log "Hello World!"

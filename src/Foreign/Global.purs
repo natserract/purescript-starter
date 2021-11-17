@@ -1,4 +1,4 @@
-module Ffi.Global where
+module Foreign.Global where
 
 import Prelude
 
