@@ -18,6 +18,8 @@ spago run
 
 ## Install Purs Packages
 ```sh
+# After installing packages,
+# You must type spago build for synchronize
 spago install <package_name>
 ```
 
