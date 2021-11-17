@@ -9,6 +9,18 @@ import { terser } from 'rollup-plugin-terser'
 import { getIfUtils, removeEmpty } from 'webpack-config-utils'
 
 import pkg from '../package.json'
+const {
+  pascalCase,
+  normalizePackageName,
+  getOutputFileName,
+} = require('./helpers')
+
+/**
+ * @typedef {import('./types').RollupConfig} Config
+ */
+/**
+ * @typedef {import('./types').RollupPlugin} Plugin
+ */
 
 const env = process.env.NODE_ENV || 'development'
 const { ifProduction } = getIfUtils(env)
@@ -19,11 +31,9 @@ const DIST = resolve(ROOT, 'dist')
 
 /**
  * Object literals are open-ended for js checking, so we need to be explicit
- * @type {{entry:{esm5: string, esm2015: string},bundles:string}}
  */
- const PATHS = {
+const PATHS = {
   entry: {
-    esm5: resolve(DIST, 'esm5'),
     esm2015: resolve(DIST, 'esm2015'),
   },
   bundles: resolve(DIST, 'bundles'),
@@ -32,34 +42,34 @@ const DIST = resolve(ROOT, 'dist')
 /**
  * @type {string[]}
  */
- const external = Object.keys(pkg.peerDependencies) || []
+const external = Object.keys(pkg.peerDependencies) || []
 
- /**
-  *  @type {Plugin[]}
-  */
- const plugins = /** @type {Plugin[]} */ ([
-   // Allow json resolution
-   json(),
- 
-   // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
-   commonjs(),
- 
-   // Allow node_modules resolution, so you can use 'external' to control
-   // which external modules to include in the bundle
-   // https://github.com/rollup/rollup-plugin-node-resolve#usage
-   nodeResolve(),
- 
-   // Resolve source maps to the original source
-   sourceMaps(),
- 
-   // properly set process.env.NODE_ENV within `./environment.ts`
-   replace({
-     exclude: 'node_modules/**',
-     'process.env.NODE_ENV': JSON.stringify(env),
-   }),
- ])
+/**
+ *  @type {Plugin[]}
+ */
+const plugins = /** @type {Plugin[]} */ ([
+  // Allow json resolution
+  json(),
 
- /**
+  // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
+  commonjs(),
+
+  // Allow node_modules resolution, so you can use 'external' to control
+  // which external modules to include in the bundle
+  // https://github.com/rollup/rollup-plugin-node-resolve#usage
+  nodeResolve(),
+
+  // Resolve source maps to the original source
+  sourceMaps(),
+
+  // properly set process.env.NODE_ENV within `./environment.ts`
+  replace({
+    exclude: 'node_modules/**',
+    'process.env.NODE_ENV': JSON.stringify(env),
+  }),
+])
+
+/**
  * @type {Config}
  */
 const CommonConfig = {
@@ -73,9 +83,9 @@ const CommonConfig = {
 /**
  * @type {Config}
  */
-const UMDconfig = {
+ const UMDconfig = {
   ...CommonConfig,
-  input: resolve(PATHS.entry.esm5, 'index.js'),
+  input: resolve(PATHS.entry.esm2015, 'index.js'),
   output: {
     file: getOutputFileName(
       resolve(PATHS.bundles, 'index.umd.js'),
