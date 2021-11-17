@@ -22,6 +22,7 @@ spago install <package_name>
 
 ## Features
 - [X] Module Bundling
+- [X] Semantic emojified git commit
 - [ ] Hot Reload
 
 ## Note

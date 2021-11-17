@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "description": "Starter kit for purescript",
   "main": "./bundles/index.umd.js",
-  "license": "MIT",
   "es2015": "./esm2015/index.js",
   "typings": "",
   "sideEffects": false,
