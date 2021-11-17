@@ -13,6 +13,8 @@
     "url": "https://github.com/natserract/"
   },
   "scripts": {
+    "cleanup": "shx rm -rf dist",
+    "prebuild": "npm run cleanup",
     "build": "spago bundle-app --main Main --to dist/esm2015/index.js --source-maps && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
     "build:bundles": "spago bundle-module --main Main --to dist/bundles/index.js --source-maps",
     "postbuild": "node scripts/copy && npm run size",
