@@ -26,24 +26,6 @@ data Query a
   = Navigate Route a
 
 examples =
-  Object.fromFoldable
-    [ "" /\ index
-
-
-    -- -- Examples from the existing Halogen documentation
-    -- , "Halogen|Basic" /\ Halogen.Basic.component
-    -- , "Halogen|Components" /\ Halogen.Components.Container.component
-    -- , "Halogen|Components: Inputs" /\ Halogen.ComponentsInputs.Container.component
-    -- , "Halogen|Effects: Random" /\ Halogen.Effects.Random.component
-
-    -- -- Not quite the Ace component, but the code for Ace is very old and I had
-    -- -- trouble getting it to run properly. Still, the point is to demonstrate refs
-    -- -- , subscriptions, and queries, and the latter two are covered elsewhere.
-    -- , "Halogen|InputRef" /\ Halogen.InputRef.component
-    ]
-  where
-  index :: forall q i o m. H.Component q i o m
-  index = Hooks.component \_ _ -> Hooks.pure do
     HH.div_
       [ HH.h1_
         [ HH.text "Halogen Hooks" ]
@@ -58,4 +40,4 @@ examples =
       
 main :: Effect Unit
 main = HA.runHalogenAff do
-  log "Hello World!"
+  log "Hello Purs"
