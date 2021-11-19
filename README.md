@@ -6,7 +6,7 @@ The starter app for purescript project configured with rollup
 
 ## Running on Development
 ```sh
-spago run
+yarn start
 ```
 ## Build
 ```sh
