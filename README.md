@@ -23,7 +23,7 @@ spago install <package_name>
 ## Features
 - [X] Module Bundling
 - [X] Semantic emojified git commit
-- [ ] Hot Reload
+- [X] Hot Reload (little bit slow)
 
 ## Note
 - `package.json` file, only used for manage bundle packages. For installing purescript packages, you must type `spago install <package_name>`
