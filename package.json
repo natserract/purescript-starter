@@ -16,7 +16,7 @@
     "prebuild": "npm run cleanup",
     "start": "concurrently \"yarn spago:build\" \"reload -b -s index.html  -p 3000\"",
     "rollup:watch": "rollup -c config/rollup.config.js -w",
-    "spago:build": "spago build --watch --clear-screen --then 'yarn spago:bundle'",
+    "spago:build": "spago build --watch --clear-screen --before 'yarn spago:bundle'",
     "spago:bundle": "spago bundle-app --main Main --to dist/esm2015/index.js --source-maps",
     "build": "spago bundle-app --main Main --to dist/esm2015/index.js --source-maps && rollup -c config/rollup.config.js --environment NODE_ENV:production",
     "postbuild": "node scripts/copy && npm run size",
