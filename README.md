@@ -13,6 +13,11 @@ yarn start
 yarn build
 ```
 
+## Formatter
+```sh
+yarn format
+```
+
 ## Install Purs Packages
 ```sh
 # After installing packages,
@@ -24,6 +29,7 @@ spago install <package_name>
 - [X] Module Bundling
 - [X] Semantic emojified git commit
 - [X] Hot Reload
+- [X] Beautify Formatter
 
 ## Note
 - Hot reload can little bit slow, because that's has several process start from build and bundled `.purs -> .js`
